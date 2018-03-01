@@ -65,72 +65,79 @@ public class Logger {
     }
 
     // Array int[]
-    public static void log(int... message) {
-        String out = "primitives array: {";
-        for (int current = 0; current < message.length; current++) {
-            if (current < message.length-1) {
-                out += message[current];
-                out += ", ";
-            } else {
-                out += message[current];
-            }
-        }
-        out += "}";
-        print(out);
+    public static void log(int[] message) {
+        System.out.print("primitives array: ");
+        iterate(message);
     }
 
     // Array int[][]
-    public static void log(int[]... message) {
-        print("primitives matrix: {" + message.length);
-        for (int i = 0; i < message.length; i++) {
-            String out = "{";
-            for (int j = 0; j < message[i].length; j++) {
-                if (j < message[i].length-1) {
-                    out += message[i][j] + ", ";
-                } else {
-                    out += message[i][j];
-                }
-            }
-            out += "}";
-            print(out);
-        }
-        print("}");
+    public static void log(int[][] message) {
+        out("primitives matrix: ");
+        iterateTwoLayers(message);
     }
 
     // Array int[][][][]
-    public static void log(int[][][]... message) {
+    public static void log(int[][][][] message) {
         System.out.print("primitives multimatrix: ");
 
-        if (message.length > 0) print("{");
+        openIterate(message.length);
         for (int i = 0; i < message.length; i++) {
 
-            if (message[i].length > 0) print("{");
+            openIterate(message[i].length);
             for (int j = 0; j < message[i].length; j++) {
-
-                if (message[i][j].length > 0) print("{");
-                for (int k = 0; k < message[i][j].length; k++) {
-
-                    if (message[i][j][k].length > 0) print("{");
-                    for (int l = 0; l < message[i][j][k].length; l++) {
-                        print(String.valueOf(message[i][j][k][l]));
-                    }
-                    if (message[i][j][k].length > 0) print("}");
-                }
-                if (message[i][j].length > 0) print("}");
+                iterateTwoLayers(message[i][j]);
             }
-            if (message[i].length > 0) print("}");
+            closeIterate(message[i].length);
         }
-        if (message.length > 0) print("}");
+        closeIterate(message.length);
 
     }
 
 
+    private static void out(String message) {
+        System.out.print(message);
+    }
     private static void print(String message) {
         System.out.println(message);
+    }
+    private static void nextString() {
+        print("");
+    }
+
+    private static void iterate(int[] array) {
+        openIterate(array.length);
+        for (int i = 0; i < array.length; i++) {
+            out(String.valueOf(array[i]));
+            if (i < array.length - 1) {
+                out(", ");
+            }
+        }
+        closeIterate(array.length);
+    }
+
+    private static void iterateTwoLayers(int[][] array) {
+        openIterate(array.length);
+        for (int i = 0; i < array.length; i++) {
+            iterate(array[i]);
+        }
+        closeIterate(array.length);
+    }
+
+    private static void openIterate(int length) {
+        if (length > 0) {
+            out("{");
+        }
+    }
+    private static void closeIterate(int length) {
+        if (length > 0) {
+            print("}");
+        }
     }
 
     public static void flush() {
         sum = 0;
         state = "";
     }
+
+
 }
