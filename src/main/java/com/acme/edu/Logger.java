@@ -80,7 +80,7 @@ public class Logger {
     }
 
     // Array int[][]
-    public static void log(int[][] message) {
+    public static void log(int[]... message) {
         print("primitives matrix: {" + message.length);
         for (int i = 0; i < message.length; i++) {
             String out = "{";
@@ -95,6 +95,33 @@ public class Logger {
             print(out);
         }
         print("}");
+    }
+
+    // Array int[][][][]
+    public static void log(int[][][]... message) {
+        System.out.print("primitives multimatrix: ");
+
+        if (message.length > 0) print("{");
+        for (int i = 0; i < message.length; i++) {
+
+            if (message[i].length > 0) print("{");
+            for (int j = 0; j < message[i].length; j++) {
+
+                if (message[i][j].length > 0) print("{");
+                for (int k = 0; k < message[i][j].length; k++) {
+
+                    if (message[i][j][k].length > 0) print("{");
+                    for (int l = 0; l < message[i][j][k].length; l++) {
+                        print(String.valueOf(message[i][j][k][l]));
+                    }
+                    if (message[i][j][k].length > 0) print("}");
+                }
+                if (message[i][j].length > 0) print("}");
+            }
+            if (message[i].length > 0) print("}");
+        }
+        if (message.length > 0) print("}");
+
     }
 
 
