@@ -81,11 +81,11 @@ public class Logger {
 
     // Array int[][]
     public static void log(int[][] message) {
-        print("primitives matrix: {");
+        print("primitives matrix: {" + message.length);
         for (int i = 0; i < message.length; i++) {
             String out = "{";
-            for (int j = 0; j < message.length; j++) {
-                if (j < message.length-1) {
+            for (int j = 0; j < message[i].length; j++) {
+                if (j < message[i].length-1) {
                     out += message[i][j] + ", ";
                 } else {
                     out += message[i][j];
