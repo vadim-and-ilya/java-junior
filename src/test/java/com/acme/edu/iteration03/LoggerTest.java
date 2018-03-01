@@ -46,13 +46,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
 
         //region then
-        assertSysoutEquals(
-            "primitives matrix: {\n" +
-                "{-1, 0, 1}\n" +
-                "{1, 2, 3}\n" +
-                "{-1, -2, -3}\n" +
-            "}\n"
-        );
+        assertSysoutContains("primitives matrix: {");
+        assertSysoutContains("{-1, 0, 1}");
+        assertSysoutContains("{1, 2, 3}");
+        assertSysoutContains("{-1, -2, -3}");
+        assertSysoutContains("}");
         //endregion
     }
 
