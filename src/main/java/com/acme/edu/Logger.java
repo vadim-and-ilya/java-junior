@@ -51,7 +51,6 @@ public class Logger {
             print(message);
         } else
         print("string: " + message);
-
     }
 
     // boolean
@@ -64,47 +63,61 @@ public class Logger {
         print("reference: " + message);
     }
 
-    // Array int[]
+    /* Iteration3 */
+
+    // Array
     public static void log(int[] message) {
-        System.out.print("primitives array: ");
-        iterate(message);
+        out("primitives array: ");
+        arrayFor(message);
     }
 
-    // Array int[][]
+    // 2D Array
     public static void log(int[][] message) {
         out("primitives matrix: ");
-        iterateTwoLayers(message);
+        array2dFor(message);
     }
 
-    // Array int[][][][]
+    // 3D Array
+    public static void log(int[][][] message) {
+        out("primitives multimatrix: ");
+        array3dFor(message);
+    }
+
+    // 4D Array
     public static void log(int[][][][] message) {
-        System.out.print("primitives multimatrix: ");
+        out("primitives multimatrix: ");
 
         openIterate(message.length);
         for (int i = 0; i < message.length; i++) {
-
-            openIterate(message[i].length);
-            for (int j = 0; j < message[i].length; j++) {
-                iterateTwoLayers(message[i][j]);
-            }
-            closeIterate(message[i].length);
+            array3dFor(message[i]);
         }
         closeIterate(message.length);
 
     }
 
+    // String Array
+    public static void log(String[] message) {
+        for (String current: message) {
+            print(current);
+        }
+    }
 
+    // region Data Output
     private static void out(String message) {
         System.out.print(message);
     }
+
     private static void print(String message) {
         System.out.println(message);
     }
+
     private static void nextString() {
         print("");
     }
+    // endregion
 
-    private static void iterate(int[] array) {
+    // region Array Methods
+    private static void arrayFor(int[] array) {
         openIterate(array.length);
         for (int i = 0; i < array.length; i++) {
             out(String.valueOf(array[i]));
@@ -115,10 +128,26 @@ public class Logger {
         closeIterate(array.length);
     }
 
-    private static void iterateTwoLayers(int[][] array) {
+    private static void array2dFor(int[][] array) {
         openIterate(array.length);
         for (int i = 0; i < array.length; i++) {
-            iterate(array[i]);
+            arrayFor(array[i]);
+        }
+        closeIterate(array.length);
+    }
+
+    private static void array3dFor(int[][][] array) {
+        openIterate(array.length);
+        for (int i = 0; i < array.length; i++) {
+            array2dFor(array[i]);
+        }
+        closeIterate(array.length);
+    }
+
+    private static void array4dFor(int[][][][] array) {
+        openIterate(array.length);
+        for (int i = 0; i < array.length; i++) {
+            array3dFor(array[i]);
         }
         closeIterate(array.length);
     }
@@ -133,11 +162,12 @@ public class Logger {
             print("}");
         }
     }
+    // endregion
 
+    // Reset
     public static void flush() {
         sum = 0;
         state = "";
     }
-
 
 }
