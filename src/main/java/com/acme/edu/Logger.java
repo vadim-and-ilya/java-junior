@@ -4,8 +4,6 @@ public class Logger {
 
     static String state = "";
     static int sum = 0;
-    static int counter = 0;
-    static String last = "";
 
     // char
     public static void log(char message) {
@@ -14,7 +12,6 @@ public class Logger {
 
     // int
     public static void log(int message) {
-        last ="drop";
         if (state.equals("SUM")) {
             if (message == Integer.MAX_VALUE) {
                 print(String.valueOf(sum));
@@ -46,10 +43,7 @@ public class Logger {
     // String
     public static void log(String message) {
         if (message.equals("str 1")) {
-            last = message;
             state = "SUM";
-            if (message == last) counter++;
-            else if (last.equals("drop")) { print(message + " (x" + counter + ")"); }
             print(message);
         } else if (message.equals("str 2")) {
             state = "";
@@ -70,12 +64,46 @@ public class Logger {
         print("reference: " + message);
     }
 
+    // Array int[]
+    public static void log(int... message) {
+        String out = "primitives array: {";
+        for (int current = 0; current < message.length; current++) {
+            if (current < message.length-1) {
+                out += message[current];
+                out += ", ";
+            } else {
+                out += message[current];
+            }
+        }
+        out += "}";
+        print(out);
+    }
+
+    // Array int[][]
+    public static void log(int[][] message) {
+        print("primitives matrix: {");
+        for (int i = 0; i < message.length; i++) {
+            String out = "{";
+            for (int j = 0; j < message.length; j++) {
+                if (j < message.length-1) {
+                    out += message[i][j] + ", ";
+                } else {
+                    out += message[i][j];
+                }
+            }
+            out += "}";
+            print(out);
+        }
+        print("}");
+    }
+
+
     private static void print(String message) {
         System.out.println(message);
     }
 
     public static void flush() {
-        last = "drop";
+        sum = 0;
         state = "";
     }
 }
