@@ -2,8 +2,8 @@ package com.acme.edu;
 
 public class Logger {
 
-    static String state = "";
-    static int sum = 0;
+    private static String state = "";
+    private static int sum = 0;
 
     // char
     public static void log(char message) {
