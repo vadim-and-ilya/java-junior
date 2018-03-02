@@ -1,5 +1,6 @@
 package com.acme.edu.iteration02;
 
+import com.acme.edu.Buffer;
 import com.acme.edu.Logger;
 import com.acme.edu.SysoutCaptureAndAssertionAbility;
 import org.junit.After;
@@ -34,7 +35,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(2);
         Logger.log("str 2");
         Logger.log(0);
-        Logger.flush();
+        Buffer.flush();
         //endregion
 
         //region then
@@ -53,7 +54,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log(Integer.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
-        Logger.flush();
+        Buffer.flush();
         //endregion
 
         //region then
@@ -73,7 +74,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log((byte)Byte.MAX_VALUE);
         Logger.log("str 2");
         Logger.log(0);
-        Logger.flush();
+        Buffer.flush();
         //endregion
 
         //region then
