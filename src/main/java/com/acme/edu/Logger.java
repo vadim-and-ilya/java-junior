@@ -2,68 +2,31 @@ package com.acme.edu;
 
 public class Logger {
 
-    // char
+    // PRIMITIVE
     public static void log(char message) {
         Controller.newMessage(new Message(message));
     }
 
-    /* int
     public static void log(int message) {
-        if (Controller.state.equals("SUM")) {
-            if (message == Integer.MAX_VALUE) {
-                Printer.prn(String.valueOf(Controller.sum));
-                Printer.prn(String.valueOf(message));
-                Buffer.flush();
-            }
-            else
-            Controller.sum += message;
-        }
-        else
-            Printer.prn("primitive: " + message);
+        Controller.newMessage(new Message(message));
     }
-    */
 
-    // byte
     public static void log(byte message) {
         Controller.newMessage(new Message(message));
-        /*
-        if (Controller.state.equals("SUM")) {
-            if (message == Byte.MAX_VALUE) {
-                Printer.prn(String.valueOf(Controller.sum));
-                Printer.prn(String.valueOf(message));
-                Flush.flush();
-            }
-            else
-                Controller.sum += message;
-        }
-        else
-        Printer.prn("primitive: " + message);
-        */
     }
 
-
-    /* String
-    public static void log(String message) {
-        if (message.equals("str 1")) {
-            Controller.state = "SUM";
-            Printer.prn(message);
-        } else if (message.equals("str 2")) {
-            Controller.state = "";
-            Printer.prn(String.valueOf(Controller.sum));
-            Printer.prn(message);
-        } else
-        Printer.prn("string: " + message);
-    }
-    */
-
-    // boolean
     public static void log(boolean message) {
-        Printer.prn("primitive: " + message);
+        Controller.newMessage(new Message(message));
     }
 
-    // Object
+    // STRING
+    public static void log(String message) {
+        Controller.newMessage(new Message(message));
+    }
+
+    // REFERENCE
     public static void log(Object message) {
-        Printer.prn("reference: " + message);
+        Controller.newMessage(new Message(message));
     }
 
     /* Iteration3 */
