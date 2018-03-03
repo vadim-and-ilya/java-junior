@@ -10,19 +10,4 @@ public class Printer {
         System.out.print(message);
     }
 
-    public static void nextString() {
-        prln("");
-    }
-
-    public static void openArray(int length) {
-        if (length > 0) {
-            prln("{");
-        }
-    }
-
-    public static void closeArray(int length) {
-        if (length > 0) {
-            prn("}");
-        }
-    }
 }

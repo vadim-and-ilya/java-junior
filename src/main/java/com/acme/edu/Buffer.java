@@ -17,6 +17,7 @@ public class Buffer {
 
     public static void flush() {
         printBuffer();
+        stringToOut.clear();
     }
 
     public static String getLastLine() {
