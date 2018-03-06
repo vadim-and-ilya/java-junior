@@ -81,7 +81,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //region when
         Logger.log(new String[] {"str1", "string 2", "str 3"});
         Buffer.flush();
-        //Logger.log("str1", "string 2", "str 3");
         //endregion
 
         //region then
@@ -91,17 +90,19 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    /*
+
     @Test
     public void shouldLogIntegersWithOneMethodCall() throws IOException {
         //region when
         Logger.log(-1, 0, 1, 3);
+        Buffer.flush();
         //endregion
 
         //region then
         assertSysoutContains("3");
         //endregion
     }
+
 
     @Test
     public void shouldCorrectDealWithIntegerOverflowWhenOneMethodCall() throws IOException {
@@ -110,6 +111,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         Logger.log("str");
         Logger.log(Integer.MAX_VALUE - 10);
         Logger.log(11);
+        Buffer.flush();
         //endregion
 
         //region then
@@ -120,5 +122,6 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
+    /*
     */
 }

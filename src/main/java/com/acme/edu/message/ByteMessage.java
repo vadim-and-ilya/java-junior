@@ -1,0 +1,29 @@
+package com.acme.edu.message;
+
+import com.acme.edu.Controller;
+
+public class ByteMessage implements Message {
+
+    public ByteMessage(Byte message) {
+
+        CheckString.check();
+
+        if (controller.getSumByte() == 0 & !Controller.getCalc()) {
+            buffer.save(message);
+        }
+        if (Controller.getCalc()) {
+            if ((int)(controller.getSumByte() + message) < Byte.MAX_VALUE & (controller.getSumByte() + message) >= message) {
+                controller.enlargeSumByte(message);
+            } else if (controller.getSumByte() + message == 0 ) {
+                buffer.save(message);
+            } else if (message == Byte.MAX_VALUE) {
+                buffer.save(controller.getSumByte());
+                buffer.save(Byte.MAX_VALUE);
+                controller.setSumByte((byte) 0);
+            }
+        }
+        controller.setSumInt(0);
+
+    }
+
+}

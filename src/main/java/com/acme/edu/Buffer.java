@@ -4,30 +4,31 @@ import java.util.ArrayList;
 
 public class Buffer {
 
-    public static String previousType;
-    public static int count = 1;
+    private static ArrayList<Object> objectList = new ArrayList<>();
 
-    private static ArrayList<String> stringToOut = new ArrayList<String>();
+    public static Printer printer = new ConsolePrinter();
 
-    public static void printBuffer() {
-        for (String line: stringToOut) {
-            Printer.prln(line);
+    private static void printBuffer() {
+        for (Object current: objectList) {
+            printer.out(current);
         }
-    }
 
-    public static void flush() {
-        printBuffer();
-        stringToOut.clear();
     }
-
-    public static String getLastLine() {
-        return stringToOut.get(stringToOut.size()-1);
-    }
-
-    // ------------------------------
 
     public void save(Object message) {
-        stringToOut.add(String.valueOf(message));
+        objectList.add(message.toString());
+    }
+
+    public String getLast() {
+        return objectList.get(objectList.size()-1).toString();
+    }
+
+
+    public static void flush() {
+        Logger.log("");
+        printBuffer();
+        objectList.clear();
+        Controller.setFirst(true);
     }
 
 }
