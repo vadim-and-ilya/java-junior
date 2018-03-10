@@ -1,8 +1,14 @@
 package com.acme.edu.message;
 
 import com.acme.edu.Controller;
+import com.acme.edu.formatter.FormatVisitor;
 
 public class IntegerMessage implements Message {
+
+    @Override
+    public String accept(FormatVisitor fv) {
+        return fv.formatInt(this);
+    }
 
     public IntegerMessage(int message) {
         CheckString.check();

@@ -1,8 +1,14 @@
 package com.acme.edu.message;
 
 import com.acme.edu.Controller;
+import com.acme.edu.formatter.FormatVisitor;
 
 public class ByteMessage implements Message {
+
+    @Override
+    public String accept(FormatVisitor fv) {
+        return null;
+    }
 
     public ByteMessage(Byte message) {
 
@@ -25,5 +31,4 @@ public class ByteMessage implements Message {
         controller.setSumInt(0);
 
     }
-
 }
