@@ -7,66 +7,56 @@ public class Logger {
 
     private static Controller controller = new Controller();
 
-    private static final String     CHAR = "char: ",
-                                    PRIMITIVE = "primitive: ",
-                                    STRING = "string: ",
-                                    REFERENCE = "reference: ",
-                                    ARRAY = "primitives array: ",
-                                    MATRIX = "primitives matrix: ",
-                                    MULTI_MATRIX = "primitives multimatrix: ",
-                                    STRING_ARRAY = "string array: ",
-                                    VARARG = "vararg: ";
-
     // PRIMITIVE
     public static void log(@NotNull char message) {
-        controller.direct(new CharMessage(message),CHAR);
+        controller.direct(new CharMessage(message),false);
     }
 
     public static void log(@NotNull int message) {
-        controller.direct(new IntegerMessage(message), PRIMITIVE);
+        controller.direct(new IntegerMessage(message), false);
     }
 
     public static void log(@NotNull byte message) {
-        controller.direct(new ByteMessage(message), PRIMITIVE);
+        controller.direct(new ByteMessage(message), false);
     }
 
     public static void log(@NotNull boolean message) {
-        controller.direct(new BooleanMessage(message), PRIMITIVE);
+        controller.direct(new BooleanMessage(message), false);
     }
 
     // STRING
     public static void log(@NotNull String message) {
-        controller.direct(new StringMessage(message), STRING);
+        controller.direct(new StringMessage(message), true);
     }
 
     // REFERENCE
     public static void log(@NotNull Object message) {
-        controller.direct(new ObjectMessage(message),REFERENCE);
+        controller.direct(new ObjectMessage(message),false);
     }
 
     // Array
     public static void log(@NotNull int[] message) {
-        controller.direct(new IntArrayMessage(message), ARRAY);
+        controller.direct(new IntArrayMessage(message), false);
     }
 
     // Matrix
     public static void log(@NotNull int[][] message) {
-        controller.direct(new IntMatrixMessage(message), MATRIX);
+        controller.direct(new IntMatrixMessage(message), false);
     }
 
     // Multi_Matrix
     public static void log(@NotNull int[][][][] message) {
-        controller.direct(new IntMultimatrixMessage(message), MULTI_MATRIX);
+        controller.direct(new IntMultimatrixMessage(message), false);
     }
 
     // String Array
     public static void log(@NotNull String[] message) {
-        controller.direct(new StringArrayMessage(message), STRING_ARRAY);
+        controller.direct(new StringArrayMessage(message), false);
     }
 
     // Integer Vararg
     public static void log(@NotNull int param, int... message) {
-        controller.direct(new VarargMessage(param, message), VARARG);
+        controller.direct(new VarargMessage(param, message), false);
     }
 
 }

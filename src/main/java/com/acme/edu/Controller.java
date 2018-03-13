@@ -14,18 +14,20 @@ public class Controller {
     private static int counter = 1;
     private static String temporary = null;
 
-    public void direct(Object message, String prefix) {
+    /**
+     * Если вызов функции log() является первым, декорируем его
+     * Если первый вызов типа String, включаем вычисления для iteration2
+     */
+    public void direct(Object message, boolean isString) {
 
-        // Является ли вызов первым
-        // Если первый вызов типа String, включаем вычисления для iteration2
         if (first) {
-            //Buffer.printer.outPrefix(prefix);
             new PrefixFormatter().format((Message) message);
             first = false;
-            if (prefix.equals("string: ")) {
+            if (isString) {
                 calc = true;
             }
         }
+
     }
 
     //region GETTER & SETTER
