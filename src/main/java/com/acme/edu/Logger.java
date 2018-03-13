@@ -7,7 +7,7 @@ public class Logger {
 
     private static Controller controller = new Controller();
 
-    // PRIMITIVE
+    // PRIMITIVES
     public static void log(@NotNull char message) {
         controller.direct(new CharMessage(message),false);
     }
