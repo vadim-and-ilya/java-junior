@@ -1,8 +1,11 @@
 package com.acme.edu;
 
+import com.acme.edu.formatter.FormatVisitor;
+import com.acme.edu.formatter.PrefixFormatter;
+import com.acme.edu.message.Message;
+
 public class Controller {
 
-    private Buffer buffer = new Buffer();
     private static boolean calc = false;
     private static boolean first = true;
 
@@ -11,14 +14,16 @@ public class Controller {
     private static int counter = 1;
     private static String temporary = null;
 
-    public void direct(Object message, String prefix) {
+    /**
+     * Если вызов функции log() является первым, декорируем его
+     * Если первый вызов типа String, включаем вычисления для iteration2
+     */
+    public void direct(Object message, boolean isString) {
 
-        // Является ли вызов первым
-        // Если первый вызов типа String, включаем вычисления для iteration2
         if (first) {
-            Buffer.printer.outPrefix(prefix);
+            new PrefixFormatter().format((Message) message);
             first = false;
-            if (prefix.equals("string: ")) {
+            if (isString) {
                 calc = true;
             }
         }

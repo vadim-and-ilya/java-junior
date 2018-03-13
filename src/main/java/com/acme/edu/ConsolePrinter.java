@@ -1,7 +1,5 @@
 package com.acme.edu;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 public class ConsolePrinter implements Printer {
 
     @Override

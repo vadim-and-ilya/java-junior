@@ -6,8 +6,8 @@ import com.acme.edu.formatter.FormatVisitor;
 public class ByteMessage implements Message {
 
     @Override
-    public String accept(FormatVisitor fv) {
-        return null;
+    public void accept(FormatVisitor fv) {
+        fv.formatByte(this);
     }
 
     public ByteMessage(Byte message) {

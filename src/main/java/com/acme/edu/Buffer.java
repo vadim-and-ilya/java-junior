@@ -5,24 +5,17 @@ import java.util.ArrayList;
 public class Buffer {
 
     private static ArrayList<Object> objectList = new ArrayList<>();
-
     public static Printer printer = new ConsolePrinter();
 
     private static void printBuffer() {
         for (Object current: objectList) {
             printer.out(current);
         }
-
     }
 
     public void save(Object message) {
         objectList.add(message.toString());
     }
-
-    public String getLast() {
-        return objectList.get(objectList.size()-1).toString();
-    }
-
 
     public static void flush() {
         Logger.log("");

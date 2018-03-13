@@ -1,6 +1,6 @@
 package com.acme.edu.message;
 
-public class ArrayHandle implements Message {
+public class ArrayHandle {
 
     void roundOne(int[] message) {
         String line = "{";
@@ -11,30 +11,30 @@ public class ArrayHandle implements Message {
             }
         }
         line += "}";
-        buffer.save(line);
+        Message.buffer.save(line);
     }
     void roundTwo(int[][] message) {
-        buffer.save("{");
+        Message.buffer.save("{");
         for (int i = 0; i < message.length; i++) {
             roundOne(message[i]);
         }
-        buffer.save("}");
+        Message.buffer.save("}");
     }
 
     void roundThree(int[][][] message) {
-        buffer.save("{");
+        Message.buffer.save("{");
         for (int i = 0; i < message.length; i++) {
             roundTwo(message[i]);
         }
-        buffer.save("}");
+        Message.buffer.save("}");
     }
 
     void roundFour(int[][][][] message) {
-        buffer.save("{");
+        Message.buffer.save("{");
         for (int i = 0; i < message.length ; i++) {
             roundThree(message[i]);
         }
-        buffer.save("}");
+        Message.buffer.save("}");
     }
 
 }
