@@ -1,15 +1,15 @@
 package com.acme.edu.message;
 
-public class CheckString implements Message {
+public class CheckString {
 
     public static void check() {
-        if (controller.getTemporary() != null) {
-            if (controller.getCounter() > 1) {
-                buffer.save(controller.getTemporary() + " (x" + controller.getCounter() + ")");
+        if (Message.controller.getTemporary() != null) {
+            if (Message.controller.getCounter() > 1) {
+                Message.buffer.save(Message.controller.getTemporary() + " (x" + Message.controller.getCounter() + ")");
             } else {
-                buffer.save(controller.getTemporary());
+                Message.buffer.save(Message.controller.getTemporary());
             }
-            controller.setTemporary(null);
+            Message.controller.setTemporary(null);
         }
     }
 

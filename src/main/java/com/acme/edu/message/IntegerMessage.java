@@ -6,8 +6,8 @@ import com.acme.edu.formatter.FormatVisitor;
 public class IntegerMessage implements Message {
 
     @Override
-    public String accept(FormatVisitor fv) {
-        return fv.formatInt(this);
+    public void accept(FormatVisitor fv) {
+        fv.formatInt(this);
     }
 
     public IntegerMessage(int message) {

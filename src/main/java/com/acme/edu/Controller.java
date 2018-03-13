@@ -1,8 +1,11 @@
 package com.acme.edu;
 
+import com.acme.edu.formatter.FormatVisitor;
+import com.acme.edu.formatter.PrefixFormatter;
+import com.acme.edu.message.Message;
+
 public class Controller {
 
-    private Buffer buffer = new Buffer();
     private static boolean calc = false;
     private static boolean first = true;
 
@@ -16,13 +19,13 @@ public class Controller {
         // Является ли вызов первым
         // Если первый вызов типа String, включаем вычисления для iteration2
         if (first) {
-            Buffer.printer.outPrefix(prefix);
+            //Buffer.printer.outPrefix(prefix);
+            new PrefixFormatter().format((Message) message);
             first = false;
             if (prefix.equals("string: ")) {
                 calc = true;
             }
         }
-
     }
 
     //region GETTER & SETTER

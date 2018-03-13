@@ -9,6 +9,6 @@ public interface Message {
     Controller controller = new Controller();
     Buffer buffer = new Buffer();
 
-    String accept(FormatVisitor fv);
+    void accept(FormatVisitor fv);
 
 }
